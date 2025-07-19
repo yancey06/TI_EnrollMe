@@ -275,7 +275,7 @@ class _ProfileScreenState extends State<ProfileScreen>
                         gradient: const LinearGradient(
                           colors: [
                             Color(0xFF3D5AFE),
-                            Color(0xFFEE3EC9),
+                            Color(0xFF00BFAE),
                             Color(0xFF00E5FF),
                           ],
                         ),
@@ -286,7 +286,7 @@ class _ProfileScreenState extends State<ProfileScreen>
                             offset: const Offset(0, 10),
                           ),
                           BoxShadow(
-                            color: const Color(0xFFEE3EC9).withOpacity(0.3),
+                            color: const Color(0xFF00BFAE).withOpacity(0.3),
                             blurRadius: 20,
                             offset: const Offset(0, 5),
                           ),
@@ -325,7 +325,7 @@ class _ProfileScreenState extends State<ProfileScreen>
                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
                 decoration: BoxDecoration(
                   gradient: const LinearGradient(
-                    colors: [Color(0xFF3D5AFE), Color(0xFFEE3EC9)],
+                    colors: [Color(0xFF3D5AFE), Color(0xFF00BFAE)],
                   ),
                   borderRadius: BorderRadius.circular(20),
                   boxShadow: [
@@ -426,7 +426,7 @@ class _ProfileScreenState extends State<ProfileScreen>
             padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
               gradient: const LinearGradient(
-                colors: [Color(0xFF3D5AFE), Color(0xFFEE3EC9)],
+                colors: [Color(0xFF3D5AFE), Color(0xFF00BFAE)],
               ),
               borderRadius: BorderRadius.circular(12),
               boxShadow: [
@@ -477,7 +477,7 @@ class _ProfileScreenState extends State<ProfileScreen>
         borderRadius: BorderRadius.circular(16),
         gradient: isPrimary
             ? const LinearGradient(
-                colors: [Color(0xFF3D5AFE), Color(0xFFEE3EC9)],
+                colors: [Color(0xFF3D5AFE), Color(0xFF00BFAE)],
               )
             : null,
         border: isPrimary
@@ -539,7 +539,7 @@ class _ProfileScreenState extends State<ProfileScreen>
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
             decoration: BoxDecoration(
               gradient: const LinearGradient(
-                colors: [Color(0xFF3D5AFE), Color(0xFFEE3EC9)],
+                colors: [Color(0xFF3D5AFE), Color(0xFF00BFAE)],
               ),
               borderRadius: BorderRadius.circular(20),
             ),

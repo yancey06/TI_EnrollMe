@@ -345,7 +345,7 @@ class _LoginScreenState extends State<LoginScreen>
                         colors: [
                           const Color(0xFF6366F1),
                           const Color(0xFF8B5CF6),
-                          const Color(0xFFEC4899),
+                          const Color(0xFF00BFAE),
                         ],
                       ),
                       boxShadow: [
@@ -517,7 +517,7 @@ class _LoginScreenState extends State<LoginScreen>
                     colors: [
                       const Color(0xFF6366F1),
                       const Color(0xFF8B5CF6),
-                      const Color(0xFFEC4899),
+                      const Color(0xFF00BFAE),
                     ],
                   ),
                 ),

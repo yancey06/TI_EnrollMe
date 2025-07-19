@@ -5,6 +5,7 @@ import 'dart:math' as math;
 import 'package:google_fonts/google_fonts.dart';
 import '../utils/constants.dart';
 import '../utils/app_routes.dart';
+import 'section_selection_screen.dart';
 
 class GradeSelectionScreen extends StatefulWidget {
   const GradeSelectionScreen({super.key});
@@ -102,10 +103,11 @@ class _GradeSelectionScreenState extends State<GradeSelectionScreen>
   void _onContinue() {
     if (_selectedGrade != null) {
       HapticFeedback.mediumImpact();
-      Navigator.pushReplacementNamed(
+      Navigator.push(
         context,
-        AppRoutes.subjectSelection,
-        arguments: _selectedGrade,
+        MaterialPageRoute(
+          builder: (context) => SectionSelectionScreen(gradeLevel: _selectedGrade!),
+        ),
       );
     }
   }
@@ -121,6 +123,8 @@ class _GradeSelectionScreenState extends State<GradeSelectionScreen>
           onPressed: () => Navigator.of(context).maybePop(),
           tooltip: 'Back',
         ),
+        title: Text('Select Grade', style: GoogleFonts.poppins(color: Colors.white, fontWeight: FontWeight.w600)),
+        centerTitle: true,
       ),
       body: Container(
         decoration: const BoxDecoration(
@@ -196,7 +200,7 @@ class _GradeSelectionScreenState extends State<GradeSelectionScreen>
                             gradient: const LinearGradient(
                               colors: [
                                 Color(0xFF3D5AFE),
-                                Color(0xFFEE3EC9),
+                                Color(0xFF00BFAE),
                                 Color(0xFF00E5FF),
                               ],
                             ),
@@ -207,16 +211,18 @@ class _GradeSelectionScreenState extends State<GradeSelectionScreen>
                                 offset: const Offset(0, 8),
                               ),
                               BoxShadow(
-                                color: const Color(0xFFEE3EC9).withOpacity(0.3),
+                                color: const Color(0xFF00BFAE).withOpacity(0.3),
                                 blurRadius: 15,
                                 offset: const Offset(0, 4),
                               ),
                             ],
                           ),
-                          child: const Icon(
-                            Icons.school_rounded,
-                            size: 40,
-                            color: Colors.white,
+                          child: Image.asset(
+                            'lib/screens/ti_logo.png',
+                            width: 44,
+                            height: 44,
+                            fit: BoxFit.contain,
+                            alignment: Alignment.center,
                           ),
                         ),
                       );
@@ -228,7 +234,7 @@ class _GradeSelectionScreenState extends State<GradeSelectionScreen>
                     shaderCallback: (bounds) => const LinearGradient(
                       colors: [
                         Color(0xFF3D5AFE),
-                        Color(0xFFEE3EC9),
+                        Color(0xFF00BFAE),
                         Color(0xFF00E5FF),
                       ],
                     ).createShader(bounds),
@@ -304,7 +310,7 @@ class _GradeSelectionScreenState extends State<GradeSelectionScreen>
                   end: Alignment.bottomRight,
                   colors: [
                     Color(0xFF3D5AFE),
-                    Color(0xFFEE3EC9),
+                    Color(0xFF00BFAE),
                   ],
                 )
               : LinearGradient(
@@ -323,7 +329,7 @@ class _GradeSelectionScreenState extends State<GradeSelectionScreen>
                     offset: const Offset(0, 10),
                   ),
                   BoxShadow(
-                    color: const Color(0xFFEE3EC9).withOpacity(0.3),
+                    color: const Color(0xFF00BFAE).withOpacity(0.3),
                     blurRadius: 15,
                     offset: const Offset(0, 5),
                   ),
@@ -428,7 +434,7 @@ class _GradeSelectionScreenState extends State<GradeSelectionScreen>
                 end: Alignment.bottomRight,
                 colors: [
                   Color(0xFF3D5AFE),
-                  Color(0xFFEE3EC9),
+                  Color(0xFF00BFAE),
                 ],
               )
             : LinearGradient(
@@ -445,7 +451,7 @@ class _GradeSelectionScreenState extends State<GradeSelectionScreen>
                   offset: const Offset(0, 10),
                 ),
                 BoxShadow(
-                  color: const Color(0xFFEE3EC9).withOpacity(0.3),
+                  color: const Color(0xFF00BFAE).withOpacity(0.3),
                   blurRadius: 15,
                   offset: const Offset(0, 5),
                 ),

@@ -5,6 +5,8 @@ import '../services/user_service.dart';
 import '../models/profile.dart';
 import '../models/subject.dart';
 import '../utils/dialogs.dart';
+import '../services/enrollment_service.dart';
+import '../models/enrollment.dart';
 
 class SummaryScreen extends StatefulWidget {
   const SummaryScreen({super.key});
@@ -104,25 +106,8 @@ class _SummaryScreenState extends State<SummaryScreen> with TickerProviderStateM
                         tooltip: 'Back',
                       ),
                     ),
-                    flexibleSpace: FlexibleSpaceBar(
-                      centerTitle: true,
-                      title: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                        decoration: BoxDecoration(
-                          color: Colors.white.withOpacity(0.1),
-                          borderRadius: BorderRadius.circular(20),
-                          border: Border.all(color: Colors.white.withOpacity(0.2)),
-                        ),
-                        child: Text(
-                          'Enrollment Summary',
-                          style: GoogleFonts.poppins(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ),
+                    title: Text('Enrollment Summary', style: GoogleFonts.poppins(color: Colors.white, fontWeight: FontWeight.w600)),
+                    centerTitle: true,
                   ),
                   
                   // Content
@@ -149,10 +134,12 @@ class _SummaryScreenState extends State<SummaryScreen> with TickerProviderStateM
                                 ),
                               ],
                             ),
-                            child: const Icon(
-                              Icons.school_rounded,
-                              color: Colors.white,
-                              size: 40,
+                            child: Image.asset(
+                              'lib/screens/ti_logo.png',
+                              width: 44,
+                              height: 44,
+                              fit: BoxFit.contain,
+                              alignment: Alignment.center,
                             ),
                           ),
                           
@@ -488,6 +475,28 @@ class _SummaryScreenState extends State<SummaryScreen> with TickerProviderStateM
           ),
         ),
         onPressed: () {
+          final user = AuthService.currentUser;
+          if (user != null) {
+            final args = ModalRoute.of(context)?.settings.arguments as Map?;
+            final int? gradeLevel = args != null ? args['gradeLevel'] as int? : null;
+            final List<Subject> subjects = args != null && args['subjects'] is List<Subject>
+                ? List<Subject>.from(args['subjects'])
+                : [];
+            final section = args != null && args['section'] != null ? args['section'] : null;
+            final String sectionName = section != null ? section.name : '';
+            final String adviser = section != null ? section.teacher : '';
+            if (gradeLevel != null && subjects.isNotEmpty) {
+              EnrollmentService.saveEnrollment(
+                Enrollment(
+                  username: user.username,
+                  gradeLevel: gradeLevel,
+                  subjects: subjects,
+                  sectionName: sectionName,
+                  adviser: adviser,
+                ),
+              );
+            }
+          }
           Navigator.pushReplacementNamed(context, '/enrollment-success');
         },
         child: Row(
